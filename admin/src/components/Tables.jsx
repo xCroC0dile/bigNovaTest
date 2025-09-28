@@ -6,6 +6,31 @@ import TextField from "@mui/material/TextField";
 const paginationModel = { page: 0, pageSize: 5 };
 
 export default function Tables({ rows, columns }) {
+  const handleAdminDownload = async () => {
+  try {
+    const token = localStorage.getItem("Admintoken");
+    const response = await fetch("http://localhost:4000/api/referral/downloadall", {
+      method: "GET",
+      headers: {
+        token: token, 
+      },
+    });
+
+    if (!response.ok) throw new Error("Erreur lors du téléchargement du fichier");
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "referrals_admin.csv";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   const [searchText, setSearchText] = React.useState("");
   const [filteredRows, setFilteredRows] = React.useState(rows);
 
@@ -44,6 +69,7 @@ export default function Tables({ rows, columns }) {
         pageSizeOptions={[5, 10]}
         sx={{ border: 0 }}
       />
+      <button onClick={handleAdminDownload}>Telecharger</button>
     </Paper>
   );
 }

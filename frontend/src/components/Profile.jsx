@@ -27,7 +27,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    window.location.href = "/";
   };
 
   if (!user) return <p>Chargement du profil...</p>;

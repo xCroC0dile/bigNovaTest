@@ -9,7 +9,12 @@ const Stats = () => {
     fetchReferrals();
   }, [fetchReferrals]);
 
-  return <Cardbox props={totalReferrals} />;
+  return (
+    <>
+    <h1>Nombre des parrains</h1>
+  <Cardbox props={totalReferrals}/>
+  </>
+  );
 };
 
 export default Stats;

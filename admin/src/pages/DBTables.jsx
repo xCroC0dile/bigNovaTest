@@ -115,8 +115,8 @@ const AdminReferrals = () => {
         </Select>
       ),
     },
-    { field: "sponsor", headerName: "Sponsor", width: 150 },
-    { field: "sponsorEmail", headerName: "Email du Sponsor", width: 180 },
+    { field: "sponsor", headerName: "Parrain", width: 150 },
+    { field: "sponsorEmail", headerName: "Email du Parrain", width: 180 },
     {
       field: "actions",
       headerName: "Actions",
@@ -137,9 +137,10 @@ const AdminReferrals = () => {
 
   return (
     <div style={{ padding: "20px", backgroundColor: "#f4f6f8", minHeight: "100vh" }}>
-      <h2 style={{ marginBottom: "20px", color: "#333" }}>Liste des referrals</h2>
+      <h2 style={{ marginBottom: "20px", color: "#333" }}>Liste des prospecs</h2>
       <Tables rows={rows} columns={columns} />
     </div>
+    
   );
 };
 

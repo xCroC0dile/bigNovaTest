@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DBsideNav from "../components/DBsideNav";
 import Profile from "../components/Profile";
 import Stats from "../components/Stats";
 import Revenue from "../components/Revenue";
 import Tables from "../components/Tables";
 import { Route, Routes } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!localStorage.getItem("token")){
+      navigate("/login");
+    }
+  }, []);
+  
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <DBsideNav />

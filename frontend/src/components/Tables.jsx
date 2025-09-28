@@ -4,7 +4,8 @@ import { AppContext } from "../context/AppContext";
 import { Paper, Typography } from "@mui/material";
 
 const Tables = () => {
-  const { referrals, fetchReferrals } = useContext(AppContext);
+
+  const { referrals, fetchReferrals ,token,serverUrl} = useContext(AppContext);
 
   // Columns with basic styling
   const referralColumns = [
@@ -24,6 +25,24 @@ const Tables = () => {
       phone: ref.phone,
       status: ref.status,
     })) || [];
+
+    // download csv file
+        const handleDownload = async () => {
+    try {
+      const response = await fetch(`${serverUrl}/api/referral/download`, { headers: { token} });
+      if (!response.ok) throw new Error("Download failed");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "referrals.csv";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (error) {
+      console.error("Erreur lors du téléchargement du CSV:", error);
+    }
+  };
 
   useEffect(() => {
     fetchReferrals();
@@ -60,6 +79,7 @@ const Tables = () => {
           },
         }}
       />
+      <button onClick={handleDownload}>Telecharger</button>
     </Paper>
   );
 };
