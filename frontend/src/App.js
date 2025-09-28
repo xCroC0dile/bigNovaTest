@@ -16,19 +16,17 @@ import AdminAuth from './pages/AdminAuth';
 function App() {
   return (
     <div className="App">
-    <Header/>
-        <Routes>
+     
+    <Routes>
        
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/adminauth" element={<AdminAuth />} />
         <Route path="/signup" element={<Singup />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/r/:ID" element={<ReferralPage />} />
   
     
       </Routes>
-      <Footer/>
       <ToastContainer position="top-right" autoClose={3000} />
 
     </div>

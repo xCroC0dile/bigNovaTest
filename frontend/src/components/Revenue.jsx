@@ -11,7 +11,7 @@ const Stats = () => {
   const {totalReferrals, fetchReferrals} = useContext(AppContext);
   var revenue = totalReferrals * income;
   return (
-    <Cardbox props={revenue} props2="dzd" />
+    <Cardbox props={revenue} props2="DZD" />
     
   )
 }

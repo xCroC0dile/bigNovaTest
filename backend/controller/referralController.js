@@ -63,11 +63,12 @@ const getAllReferrals = async (req, res) => {
 // update referral status
 const updateReferralStatus = async (req, res) => {
     try {
-        const { referralId,status} = req.body;
-        if (!referralId) {
+        const { status} = req.body;
+        const {id} = req.params;
+        if (!id) {
             return res.status(400).json({ success: false, message: "Referral ID is required" });
           }
-            const referral = await referralModel.findById(referralId);
+            const referral = await referralModel.findById(id);
             if (!referral) {
                 return res.status(404).json({ success: false, message: "Referral not found" });
               }
@@ -84,10 +85,10 @@ const updateReferralStatus = async (req, res) => {
 // delete referral
 const deleteReferral = async (req, res) => {
     try {
-      const { referralId } = req.body;
+      const { id } = req.params;
   
-      const referral = await referralModel.findById(referralId);
-      if (!referral) {
+      const referral = await referralModel.findById(id);
+      if (!id) {
         return res.status(404).json({ success: false, message: "Referral not found" });
       }
   

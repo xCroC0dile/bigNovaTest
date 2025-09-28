@@ -1,25 +1,27 @@
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 
-function Cardbox({props,props2}) {
+function Cardbox({ props, props2 }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+    <Card
+      style={{
+        width: '18rem',
+        borderRadius: '15px',
+        backgroundColor: '#f0f4f8',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        textAlign: 'center',
+        padding: '20px',
+        margin: '10px',
+      }}
+    >
       <Card.Body>
-        <Card.Title>{props} {props2}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#333' }}>
+          {props}
+        </Card.Title>
+        {props2 && (
+          <Card.Subtitle style={{ fontSize: '1.2rem', color: '#555', marginTop: '5px' }}>
+            {props2}
+          </Card.Subtitle>
+        )}
       </Card.Body>
     </Card>
   );

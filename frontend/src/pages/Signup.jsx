@@ -6,19 +6,20 @@ import Col from "react-bootstrap/Col";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { AppContext} from "../context/AppContext";
+import { AppContext } from "../context/AppContext";
 
-function Singup() {
+function Signup() {
   const { token, setToken, navigate, serverUrl } = useContext(AppContext);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      if (password !== ConfirmPassword) {
-        toast.error("your passwords does not match!");
+      if (password !== confirmPassword) {
+        toast.error("Vos mots de passe ne correspondent pas !");
         return null;
       }
       const res = await axios.post(serverUrl + "/api/auth/signup", {
@@ -37,59 +38,65 @@ function Singup() {
       toast.error(error.message);
     }
   };
+
   useEffect(() => {
-    if (token) {
+    if (token && token !== null && token !== "undefined") {
       navigate("/dashboard");
     }
   }, [token]);
+
   return (
     <Container
       className="d-flex justify-content-center"
       style={{ marginTop: "90px", marginBottom: "80px" }}
     >
       <Row className="w-100">
-        <Col md={6} lg={4} className="mx-auto">
+        <Col md={6} lg={4} className="mx-auto shadow-lg p-4 rounded bg-white">
           <h3 className="text-center mb-4">Inscription</h3>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form onSubmit={onSubmitHandler}>
+            <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Nom</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Votre Nom"
+                placeholder="Votre nom complet"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+
+            <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Votre adresse email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Mot de passe</Form.Label>
-              <Form.Control type="password" placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password} />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Confirmer le Mot de passe</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Entrez un mot de passe"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formConfirmPassword">
+              <Form.Label>Confirmer le mot de passe</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Répétez le mot de passe"
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                value={ConfirmPassword}
+                value={confirmPassword}
               />
             </Form.Group>
 
             <div className="d-grid">
-              <Button variant="primary" type="submit" onClick={onSubmitHandler}>
-                Inscription
+              <Button variant="primary" type="submit">
+                S'inscrire
               </Button>
             </div>
           </Form>
@@ -99,4 +106,4 @@ function Singup() {
   );
 }
 
-export default Singup;
+export default Signup;

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import DBsideNav from "../components/DBsideNav";
 import DBTables from "./DBTables";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("Admintoken");
+    if (!token) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
    
