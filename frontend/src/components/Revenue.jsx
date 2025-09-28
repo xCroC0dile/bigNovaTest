@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import Cardbox from './Cardbox'
+import { useContext } from 'react'
+import { AppContext } from '../context/AppContext' 
 
-const revenue = () => {
+const Stats = () => {
+  const income = 5000; 
+ useEffect(() => {
+    fetchReferrals();
+  }, []);
+  const {totalReferrals, fetchReferrals} = useContext(AppContext);
+  var revenue = totalReferrals * income;
   return (
-    <div>
-      <Cardbox/>
-    </div>
+    <Cardbox props={revenue} props2="dzd" />
     
   )
 }
 
-export default revenue
+export default Stats

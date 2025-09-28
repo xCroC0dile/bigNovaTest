@@ -4,10 +4,11 @@ import userModel from "../models/user.js";
 const addReferral = async (req, res) => {
   try {
     // const { referralId } = req.params;
-    const { name, email, phone, referralId } = req.body;
+    const { name, email, phone,referralId} = req.body;
+
     if (!referralId) {
-        return res.status(400).json({ success: false, message: "Referral code is required" });
-      }
+      return res.status(400).json({ success: false, message: "Referral ID is required" });
+    }
       
 
     // find the user that owns this referralId
@@ -35,11 +36,11 @@ const addReferral = async (req, res) => {
 // get one referral by sponsorId
 const getOneReferral = async (req, res) => {
 try{
-    const {sponsorId} = req.body;
-    if(!sponsorId){
+    const {userId} = req.auth;
+    if(!userId){
         return res.status(400).json({ success: false, message: "sponsorId is required" });
     }
-    const referrals = await referralModel.find({ userId: sponsorId });
+    const referrals = await referralModel.find({ userId});
     res.json({ success: true, referrals });
 } catch(error){
     console.error(error);

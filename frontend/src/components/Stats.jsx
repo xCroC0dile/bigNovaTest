@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import Cardbox from './Cardbox'
+import { useContext } from 'react'
+import { AppContext } from '../context/AppContext' 
 
-const stats = () => {
+const Stats = () => {
+ useEffect(() => {
+    fetchReferrals();
+  }, []);
+  const {totalReferrals, fetchReferrals} = useContext(AppContext);
   return (
-    <Cardbox/>
+    <Cardbox props={totalReferrals} />
     
   )
 }
 
-export default stats
+export default Stats

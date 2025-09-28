@@ -7,6 +7,7 @@ import connectDB from './config/mongodb.js';
 import dotenv from "dotenv";
 import cors from "cors";
 import referralRouter from './routes/referralRoutes.js';
+import authUser from './middlewares/authMiddleware.js';
 dotenv.config();
 // const express = require('express');
 const app = express();

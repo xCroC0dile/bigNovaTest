@@ -6,21 +6,30 @@ import Singup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import ReferralPage from './pages/ReferralPage';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { ToastContainer } from "react-toastify";
+import AdminAuth from './pages/AdminAuth';
+
 
 function App() {
   return (
     <div className="App">
+    <Header/>
         <Routes>
        
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/adminauth" element={<AdminAuth />} />
         <Route path="/signup" element={<Singup />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
-        <Route path="/referral/*" element={<ReferralPage />} />
+        <Route path="/r/:ID" element={<ReferralPage />} />
   
-
     
       </Routes>
+      <Footer/>
+      <ToastContainer position="top-right" autoClose={3000} />
 
     </div>
   );
