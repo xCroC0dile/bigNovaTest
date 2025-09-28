@@ -56,10 +56,10 @@ npm install
 ### Configuration
 Créer un fichier `.env` dans `backend` avec les variables suivantes :
 ```
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-ADMIN_EMAIL=your_admin_email
-ADMIN_PASSWORD=your_admin_password   
+MONGO_URI="mongodb+srv://<username>:<password>"
+JWT_SECRET="your_jwt_secret"
+ADMIN_EMAIL="your_admin_email"
+ADMIN_PASSWORD="your_admin_password "  
 ``` 
 ### Lancement
 # Démarrer le backend
