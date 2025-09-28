@@ -1,4 +1,4 @@
-1.#### 🚀 BigNova – Système de Gestion de Parrainages
+#### 🚀 BigNova – Système de Gestion de Parrainages
 
 Projet **React + Node.js/Express** pour gérer les **prospects** et **parrains**.  
 Comprend une interface **utilisateur** et **administrateur** avec fonctionnalités comme l’export CSV, la recherche dans les tables et une interface responsive.
@@ -38,9 +38,12 @@ Comprend une interface **utilisateur** et **administrateur** avec fonctionnalit�
 ### Installation
 
 # Cloner le projet
+```
 git clone https://github.com/xCroC0dile/bigNovaTest.git
+```
 
 # Installer les dépendances frontend et backend et admin
+```
 cd admin
 npm install
 
@@ -49,6 +52,7 @@ npm install
 
 cd frontend
 npm install
+````
 ### Configuration
 Créer un fichier `.env` dans `backend` avec les variables suivantes :
 ```
@@ -59,13 +63,18 @@ ADMIN_PASSWORD=your_admin_password
 ``` 
 ### Lancement
 # Démarrer le backend
+```
 cd backend
 npm start
+```
 # Démarrer l'admin
+```
 cd admin
 npm start
+```
 # Démarrer le frontend
+```
 cd frontend
 npm start
-
+```
 
