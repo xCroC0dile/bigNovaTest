@@ -65,7 +65,7 @@ ADMIN_PASSWORD="your_admin_password "
 # Démarrer le backend
 ```
 cd backend
-npm start
+npx nodemon index.js
 ```
 # Démarrer l'admin
 ```
